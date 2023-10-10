@@ -6,12 +6,9 @@
 
 class Reader {
 public:
-    Reader(const std::string& filename);
+    Reader(); 
 
     std::vector<std::string> read();
-
-private:
-    std::string filename_;
 };
 
 #endif

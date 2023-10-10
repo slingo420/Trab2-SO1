@@ -1,9 +1,7 @@
 #include "reader.hpp"
 #include <iostream>
 
-Reader::Reader(const std::string&) {
-
-}
+Reader::Reader() {}
 
 std::vector<std::string> Reader::read() {
     std::vector<std::string> lines;
