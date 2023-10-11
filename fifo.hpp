@@ -7,12 +7,12 @@
 
 class FIFO {
 public:
-    FIFO(int num_frames); 
+    FIFO(std::queue<int>::size_type num_frames); 
 
-    int run(const std::vector<int>& references); 
+    int run(const std::vector<int>& ref_vector); 
 
 private:
-    int num_frames;
+    std::queue<int>::size_type num_frames;
     std::queue<int> page_queue;
     std::unordered_set<int> frame_set;
     int page_faults;

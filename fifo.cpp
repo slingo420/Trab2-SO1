@@ -1,9 +1,9 @@
 #include "fifo.hpp"
 
-FIFO::FIFO(int num_frames) : num_frames(num_frames), page_faults(0) {}
+FIFO::FIFO(std::queue<int>::size_type num_frames) : num_frames(num_frames), page_faults(0) {}
 
-int FIFO::run(const std::vector<int>& references) {
-    for (int page : references) {
+int FIFO::run(const std::vector<int>& ref_vector) {
+    for (int page : ref_vector) {
         if (frame_set.find(page) == frame_set.end()) {
             if (page_queue.size() == num_frames) {
                 int victim = page_queue.front();

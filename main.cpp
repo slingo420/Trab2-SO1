@@ -14,15 +14,17 @@ int main(int argc, char* argv[]) {
     int num_quadros = std::stoi(argv[1]);
 
     Reader reader;
-    std::vector<std::string> ref_vector = reader.read();
+    std::vector<int> ref_vector = reader.read();
 
-    std::cout << num_quadros << std::endl;
-    for (const std::string& referencia : ref_vector) {
+    std::cout << "Number of frames: " << num_quadros << std::endl;
+    std::cout << "References: " << std::endl;
+    for (const int& referencia : ref_vector) {
         std::cout << referencia << std::endl;
     }
 
     FIFO fifo(num_quadros);
     int page_faults = fifo.run(ref_vector);
+    std::cout << "Page faults: " << page_faults << std::endl;
 
     return 0;
 }

@@ -8,7 +8,7 @@ class Reader {
 public:
     Reader(); 
 
-    std::vector<std::string> read();
+    std::vector<int> read();
 };
 
 #endif

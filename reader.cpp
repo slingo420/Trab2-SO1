@@ -3,11 +3,11 @@
 
 Reader::Reader() {}
 
-std::vector<std::string> Reader::read() {
-    std::vector<std::string> lines;
+std::vector<int> Reader::read() {
+    std::vector<int> lines;
 
-    std::string line;
-    while (getline(std::cin, line)) {
+    int line;
+    while (std::cin >> line) {
         lines.push_back(line);
     }
 
