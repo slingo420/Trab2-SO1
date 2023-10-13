@@ -9,6 +9,8 @@ public:
     Reader(); 
 
     std::vector<int> read();
+
+    int count_refs();
 };
 
 #endif

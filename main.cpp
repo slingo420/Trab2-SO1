@@ -5,6 +5,7 @@
 #include "reader.hpp"
 #include "fifo.hpp"
 #include "lru.hpp"
+#include "printer.hpp"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -13,24 +14,20 @@ int main(int argc, char* argv[]) {
     }
 
     int num_frames = std::stoi(argv[1]);
-    std::cout << "Number of frames: " << num_frames << std::endl;
 
-    std::cout << "References: " << std::endl;
     Reader reader;
     std::vector<int> ref_vector = reader.read();
-    for (const int& referencia : ref_vector) {
-        std::cout << referencia << std::endl;
-    }
+    int num_refs = reader.count_refs();
 
-    std::cout << "FIFO" << std::endl;
     FIFO fifo(num_frames);
-    int page_faults = fifo.run(ref_vector);
-    std::cout << "Page faults: " << page_faults << std::endl;
+    int page_faults_fifo = fifo.run(ref_vector);
 
-    std::cout << "LRU" << std::endl;
     LRU lru(num_frames);
-    page_faults = fifo.run(ref_vector);
-    std::cout << "Page faults: " << page_faults << std::endl;
+    int page_faults_lru = fifo.run(ref_vector);
+
+    Printer printer(num_frames, num_refs);
+    printer.FIFO(page_faults_fifo);
+    printer.LRU(page_faults_lru);
 
     return 0;
 }
