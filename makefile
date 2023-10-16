@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -O2 -std=c++17 -g
+CXXFLAGS = -Wall -Werror -Wextra -O2 -std=c++17 -g
 
 SRCS = $(shell find . -name "*.cpp")
 
