@@ -4,19 +4,12 @@
 #include <vector>
 #include <unordered_set>
 #include <list>
-
+#include <string>
 class Printer {
 public:
     Printer(int num_frames, int num_refs); 
 
-    void FIFO(int page_faults);
-
-    void LRU(int page_faults); 
-
-private:
-    int num_frames;
-    int num_refs;
-    int page_faults;
+    void print_refs(const std::string& name, int page_faults);
 };
 
 #endif

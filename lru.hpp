@@ -12,7 +12,7 @@ public:
     int run(const std::vector<int>& ref_vector); 
 
 private:
-    int num_frames;
+    unsigned long long num_frames;
     std::list<int> page_list;
     std::unordered_set<int> frame_set;
     int page_faults;
