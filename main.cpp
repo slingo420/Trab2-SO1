@@ -51,8 +51,8 @@ int main(int argc, char* argv[]) {
         auto future_lru = std::async(std::launch::async, run_algorithm, &lru);
 
         page_faults_opt = future_opt.get();
-        page_faults_lru = future_lru.get();
         page_faults_fifo = run_algorithm(&fifo);
+        page_faults_lru = future_lru.get();
     } else {
         auto future_fifo = std::async(std::launch::async, run_algorithm, &fifo);
         auto future_opt = std::async(std::launch::async, run_algorithm, &opt);
