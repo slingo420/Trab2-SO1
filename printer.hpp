@@ -9,7 +9,7 @@ class Printer {
 public:
     Printer(int num_frames, int num_refs); 
 
-    void print_refs(const std::string& name, int page_faults);
+    void print_refs(const std::string& name, unsigned int page_faults);
 };
 
 #endif

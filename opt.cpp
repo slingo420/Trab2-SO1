@@ -6,8 +6,8 @@
 #include <queue>
 #include <functional>
 
-int OPT::run(const std::vector<int>& ref_vector) {
-    int page_faults = 0;
+unsigned int OPT::run(const std::vector<int>& ref_vector) {
+    unsigned int page_faults = 0;
 
     std::unordered_map<int, std::queue<int>> page_references;
 

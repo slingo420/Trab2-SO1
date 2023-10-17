@@ -2,7 +2,7 @@
 
 LRU::LRU(int num_frames) : num_frames(num_frames), page_faults(0) {}
 
-int LRU::run(const std::vector<int>& ref_vector) {
+unsigned int LRU::run(const std::vector<int>& ref_vector) {
     std::list<int> page_list;  
     std::unordered_set<int> frame_set;
 

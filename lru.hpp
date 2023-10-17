@@ -5,17 +5,18 @@
 #include <unordered_set>
 #include <list>
 
-class LRU {
+#include "algorithm.hpp"
+class LRU : public Algorithm {
 public:
     LRU(int num_frames); 
 
-    int run(const std::vector<int>& ref_vector); 
+    unsigned int run(const std::vector<int>& ref_vector); 
 
 private:
     unsigned long long num_frames;
     std::list<int> page_list;
     std::unordered_set<int> frame_set;
-    int page_faults;
+    unsigned int page_faults;
 };
 
 #endif

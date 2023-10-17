@@ -8,6 +8,6 @@ Printer::Printer(int num_frames, int num_refs) {
     std::cout << num_refs << " refs" << endl;
 }
 
-void Printer::print_refs(const std::string& name, int page_faults) {
+void Printer::print_refs(const std::string& name, unsigned int page_faults) {
     cout << name <<  ": " << page_faults << " PFs" << endl;
 }
