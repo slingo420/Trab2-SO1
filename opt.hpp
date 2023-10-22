@@ -9,13 +9,7 @@
 
 class OPT : public Algorithm {
 public:
-    OPT(unsigned long long num_frames)
-        :num_frames{num_frames} {}
-
-    unsigned int run(const std::vector<int>& ref_vector); 
-
-private:
-    unsigned long long num_frames;
+    unsigned int run(const std::vector<int>& ref_vector, unsigned long long num_frames); 
 };
 
 #endif

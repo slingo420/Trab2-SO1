@@ -1,10 +1,9 @@
 #include "lru.hpp"
 
-LRU::LRU(int num_frames) : num_frames(num_frames), page_faults(0) {}
-
-unsigned int LRU::run(const std::vector<int>& ref_vector) {
+unsigned int LRU::run(const std::vector<int>& ref_vector, unsigned long long num_frames) {
     std::list<int> page_list;  
     std::unordered_set<int> frame_set;
+    unsigned int page_faults = 0;
 
     for (int page : ref_vector) {
         if (frame_set.find(page) == frame_set.end()) {

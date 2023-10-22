@@ -8,15 +8,7 @@
 
 class FIFO : public Algorithm {
 public:
-    FIFO(std::queue<int>::size_type num_frames); 
-
-    unsigned int run(const std::vector<int>& ref_vector); 
-
-private:
-    std::queue<int>::size_type num_frames;
-    std::queue<int> page_queue;
-    std::unordered_set<int> frame_set;
-    unsigned int page_faults;
+    unsigned int run(const std::vector<int>& ref_vector, unsigned long long num_frames); 
 };
 
 #endif

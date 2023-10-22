@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     std::cin.tie(0);
     
     if (argc != 2) {
-        std::cerr << "Uso: " << argv[0] << " <num_quadros> <arquivo_referencias.txt>\n" << std::endl;
+        std::cerr << "Uso: " << argv[0] << " <num_quadros> < arquivo_referencias.txt\n" << std::endl;
         return 1;
     }
 
@@ -29,23 +29,23 @@ int main(int argc, char* argv[]) {
     std::vector<int> ref_vector = reader.read();
 
 
-    int num_refs = reader.count_refs();
+    int num_refs = ref_vector.size();
 
     int num_threads = std::thread::hardware_concurrency();
 
     
-    FIFO fifo(num_frames);
-    LRU lru(num_frames);
-    OPT opt(num_frames);
+    FIFO fifo;
+    LRU lru;
+    OPT opt;
     auto run_algorithm = [&ref_vector, &num_frames](Algorithm *alg) {
-        return alg->run(ref_vector);
+        return alg->run(ref_vector, num_frames);
     };
     
     unsigned int page_faults_fifo, page_faults_lru, page_faults_opt;
     if (num_threads <= 1) {
-        page_faults_fifo = fifo.run(ref_vector);
-        page_faults_lru = lru.run(ref_vector);
-        page_faults_opt = opt.run(ref_vector);
+        page_faults_fifo = fifo.run(ref_vector, num_frames);
+        page_faults_lru = lru.run(ref_vector, num_frames);
+        page_faults_opt = opt.run(ref_vector, num_frames);
     } else if (num_threads == 2) {
         auto future_opt = std::async(std::launch::async, run_algorithm, &opt);
         auto future_lru = std::async(std::launch::async, run_algorithm, &lru);
